@@ -1,0 +1,11 @@
+Full Name,phone,Email,Age,Experience,Yearly Income,Has Children,License states,Expiration Date,License Number
+John Doe,111234567890,johndoe@example.com,50, 51,60000,TRUE,CA,05/15/2024,CA12345
+Jane Smith,+19876543210,johndoe@example.com,28,4,55000,asdasdE,NY,2023-12-10,NY67890
+Michael Johnson,5551234567,michaeljohnson@example.com,35,10,75000, ,Texas,2024.08.20,TX54321
+Emily Davis,(222) 333-4444,emilydavis@example.com ,24,2,48000,FALSE , |FL|Florida|CA|California ,15/05/2024,FL1529
+David Wilson,1234567890,davidwilson@example.com,40,15,90000,TRUE,1Arizona,2024-06-30,AZ3765
+
+Michael Johnson,5551234567,michaeljohnson@example.com,35,10,75000, ,Texas,2024.08.20,TX54321
+Emily Davis,(222) 333-4444,emilydavis@example.com ,24,2,48000,FALSE , |FL|Florida|CA|California ,15/05/2024,FL1529
+John Doe,111234567890,johndoe@example.com,50, 51,60000,TRUE,CA,05/15/2024,CA12345
+Jane Smith,+19876543210,johndoe@example.com,28,4,55000,asdasdE,NY,2023-12-10,NY67890
