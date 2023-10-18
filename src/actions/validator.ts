@@ -12,7 +12,7 @@ export const schema = yup.object().shape({
       .number()
       .min(0)
       .test(function (value) {
-        const age = this.parent.Age
+        const age = this.parent.age
         if (value !== undefined && age !== undefined) {
           return value < age
         }
