@@ -21,6 +21,7 @@ export const schema = yup.object().shape({
     "yearly income": yup
       .number()
       .typeError('Yearly income повинен бути числовим значенням')
+        .min(0)
         .max(1000000)
         .test(
             (value) => {
@@ -44,14 +45,31 @@ export const schema = yup.object().shape({
           if (!value) return true;
             const dateRegExp = /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4})$/;
             if (!dateRegExp.test(value)) return false;
-            const inputDate = new Date(value)
-            if (inputDate > new Date()) {
+            const [year, month, day] = value.split(/[-/]/).map(Number);
+
+            if (
+              year >= 1900 && year <= 2099 &&
+              month >= 1 && month <= 12 &&
+              day >= 1 && day <= new Date(year, month, 0).getDate()
+            ) {
+              const inputDate = new Date(value);
+              if (inputDate > new Date()) {
                 return true;
               }
+            }
+
+            return false;
         }
       ),
     "license number": yup
       .string()
       .matches(/^[0-9a-zA-Z]{6}$/)
+      // .test((value) => {
+      //   const regTest = /^[0-9a-zA-Z]{6}$/
+      //   const lNumbers = value?.split("|").map(part => part.trim());
+      //   for (lNumber of lNumbers) { 
+          
+      //   }
+      // })
       .required(),
   })

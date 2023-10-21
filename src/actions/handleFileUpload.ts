@@ -89,9 +89,14 @@ export const handleFileUpload = (
           };
           
           for (const key in record) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               //@ts-ignore
-            lowerCaseRecord[key.toLowerCase()] = record[key].toString()?.trim();
+              const value = record[key];
+            if (value !== undefined && value !== null) {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              //@ts-ignore
+                lowerCaseRecord[key.toLowerCase()] = value.toString().trim();
+              }
           }
 
           return lowerCaseRecord;
@@ -169,6 +174,9 @@ export const handleFileUpload = (
               console.error('Error');
             }
           }
+          
+          const licenseNumbers = record["license number"]?.split(" | ").map(part => part.trim());
+          record["license number"] = licenseNumbers.join(', ');
     
           return record;
         });

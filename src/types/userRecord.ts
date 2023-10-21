@@ -7,7 +7,7 @@ export interface UserRecord {
     "experience": string;
     "yearly income": string;
     "has children": string;
-    "license states": string;
+    "license states": string
     "expiration date": string;
     "license number": string;
     "duplicate with"?:number;
