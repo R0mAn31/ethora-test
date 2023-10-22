@@ -14,6 +14,7 @@ import { UserRecord } from "../../types/userRecord"
 import { ErrorSchema } from "../../types/errorSchema"
 import { handleFileUpload } from "../../actions/handleFileUpload"
 import { v4 as uuidv4 } from "uuid"
+import InputButton from "../input-button/InputButton"
 
 const CsvTable = () => {
   const [data, setData] = useState<UserRecord[] | null>([])
@@ -21,6 +22,7 @@ const CsvTable = () => {
   const [errors, setErrors] = useState<ErrorSchema[]>([])
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setData(null)
     handleFileUpload({
       event,
       setErrors,
@@ -31,7 +33,7 @@ const CsvTable = () => {
 
   return (
     <div>
-      <input type="file" accept=".csv" onChange={handleInput} />
+      <InputButton handleInput={handleInput} />
       {data ? (
         <TableContainer component={Paper}>
           <Table>
@@ -80,6 +82,7 @@ const CsvTable = () => {
             border: "2px solid red",
             display: "flex",
             alignItems: "center",
+            padding: "8px",
           }}
         >
           <Typography variant="h1" gutterBottom>
