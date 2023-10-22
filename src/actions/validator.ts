@@ -1,3 +1,4 @@
+import moment from "moment";
 import * as yup from "yup";
 
 export const schema = yup.object().shape({
@@ -46,20 +47,10 @@ export const schema = yup.object().shape({
     .required()
     .test((value) => {
       if (!value) return true;
-      const dateRegExp = /^(?:\d{4}-\d{2}-\d{2}|\d{2}\/\d{2}\/\d{4})$/;
-      if (!dateRegExp.test(value)) return false;
-      const [year, month, day] = value.split(/[-/]/).map(Number);
-
-      if (
-        year >= 1900 &&
-        year <= 2099 &&
-        month >= 1 &&
-        month <= 12 &&
-        day >= 1 &&
-        day <= new Date(year, month, 0).getDate()
-      ) {
-        const inputDate = new Date(value);
-        if (inputDate > new Date()) {
+      const isValidDate = moment(value, ['YYYY-MM-DD', 'MM/DD/YYYY'], true).isValid();
+      if (isValidDate) {
+        const inputDate = moment(value);
+        if (inputDate.isAfter(moment())) {
           return true;
         }
       }
